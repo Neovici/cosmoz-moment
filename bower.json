@@ -1,0 +1,30 @@
+{
+  "name": "cosmoz-moment",
+  "main": "cosmoz-moment.html",
+  "version": "0.0.1",
+  "homepage": "https://github.com/Neovici/cosmoz-moment",
+  "authors": [
+    "Neovici Development"
+  ],
+  "description": "Cosmoz Moment.js Polymer component",
+  "keywords": [
+    "web-components",
+    "polymer",
+    "cosmoz"
+  ],
+  "license": "Apache 2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^1.8.0",
+    "moment": "^2.17.1"
+  },
+  "devDependencies": {
+    "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^1.0.0"
+  }
+}

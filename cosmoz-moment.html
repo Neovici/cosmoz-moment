@@ -1,0 +1,62 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<dom-module id="cosmoz-moment">
+	<script type="text/javascript" src="../moment/min/moment-with-locales.min.js"></script>
+	<script type="text/javascript">
+
+		if (typeof Cosmoz === 'undefined') {
+			var Cosmoz = {};
+		}
+
+		var localSharedMoment = moment(),
+			locale = 'en',
+			momentElements = [];
+
+		/** @polymerBehavior */
+		Cosmoz.MomentBehavior = {
+			properties: {
+				locale: {
+					type: String,
+					readOnly: true,
+					value: function () {
+						return locale;
+					}
+				},
+				moment: {
+					type: Object,
+					value: localSharedMoment
+				}
+			},
+			ready: function () {
+				momentElements.push(this);
+			},
+			detached: function () {
+				var i = momentElements.indexOf(this);
+				if (i >= 0) {
+					momentElements.splice(i, 1);
+				}
+			}
+		};
+
+		Polymer({
+			is: 'cosmoz-moment',
+			properties: {
+				locale: {
+					type: String,
+					observer: 'localeChanged'
+				},
+				moment: {
+					type: Object,
+					value: localSharedMoment
+				}
+			},
+			localeChanged: function (newLocale, oldLocale) {
+				locale = newLocale;
+				this.moment.locale(locale);
+				momentElements.forEach(function (element) {
+					element._setLocale(locale);
+				});
+			}
+		});
+	</script>
+</dom-module>
