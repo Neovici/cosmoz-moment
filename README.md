@@ -4,8 +4,6 @@
 
 cosmoz-moment is a Polymer component for centralized management of Moment.js with locale change distributed notification
 
-## Credits
-
 ## Usage
 
 ### Install
@@ -17,6 +15,15 @@ cosmoz-moment is a Polymer component for centralized management of Moment.js wit
 <link rel="import" href="bower_components/cosmoz-moment/cosmoz-moment.html" />
 ```
 
+### Use it inside your element
+```html
+<cosmoz-moment locale="[[locale]]"></cosmoz-moment>
+```
+
 ## Docs
 
-See http://neovici.github.io/cosmoz-moment
+See [docs](http://neovici.github.io/cosmoz-moment) for more details
+
+## License
+
+cosmoz-moment is created under the terms of the [Apache-2.0](https://github.com/Neovici/cosmoz-moment/blob/master/LICENSE) license.
