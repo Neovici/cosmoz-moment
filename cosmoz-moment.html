@@ -1,12 +1,15 @@
 <link rel="import" href="../polymer/polymer.html">
+<!--
 
+@element cosmoz-moment
+@demo demo/index.html
+-->
 <dom-module id="cosmoz-moment">
 	<script type="text/javascript" src="../moment/min/moment-with-locales.min.js"></script>
 	<script type="text/javascript">
+		/*global Cosmoz, moment*/
 
-		if (typeof Cosmoz === 'undefined') {
-			var Cosmoz = {};
-		}
+		window.Cosmoz = window.Cosmoz || {};
 
 		var localSharedMoment = moment(),
 			locale = 'en',
@@ -27,7 +30,7 @@
 					value: localSharedMoment
 				}
 			},
-			ready: function () {
+			attached: function () {
 				momentElements.push(this);
 			},
 			detached: function () {
@@ -35,6 +38,27 @@
 				if (i >= 0) {
 					momentElements.splice(i, 1);
 				}
+			},
+			timeago: function (rawDate, locale) {
+				var date = this._ensureDate(rawDate);
+				if (!date) {
+					return '';
+				}
+				return moment(date).locale(locale).fromNow();
+			},
+			_ensureDate: function (date) {
+				if (date === undefined) {
+					return;
+				}
+				if (date instanceof Date) {
+					return date;
+				}
+				try {
+					var dateDate = new Date(date);
+				} catch (err) {
+					return;
+				}
+				return dateDate;
 			}
 		};
 

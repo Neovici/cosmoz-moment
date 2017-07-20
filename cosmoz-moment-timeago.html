@@ -1,0 +1,54 @@
+<link rel="import" href="cosmoz-moment.html">
+
+<dom-module id="cosmoz-moment-timeago">
+	<template><span>[[ timeago(date, locale, _kicker) ]]</span></template>
+</dom-module>
+
+<script type="text/javascript">
+	/*global Cosmoz*/
+
+	(function () {
+
+		Polymer({
+
+			is: 'cosmoz-moment-timeago',
+
+			behaviors: [
+				Cosmoz.MomentBehavior
+			],
+
+			properties: {
+				date: {
+					type: Object,
+					value: function () {
+						return new Date();
+					}
+				},
+				refreshInterval: {
+					type: Number,
+					value: 60000,
+					observer: 'refreshIntervalChanged'
+				},
+				_kicker: {
+					type: Number,
+					value: 0
+				}
+			},
+
+			// Local properties
+			_intervalId: null,
+
+			detached: function () {
+				window.clearInterval(this._intervalId);
+			},
+
+			refreshIntervalChanged: function () {
+				window.clearInterval(this._intervalId);
+				this._intervalId = window.setInterval(function () {
+					this._kicker += 1;
+				}.bind(this), this.refreshInterval);
+			}
+
+		});
+	})();
+</script>
