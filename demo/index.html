@@ -11,6 +11,7 @@
 	<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
 	<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
 	<link rel="import" href="../../paper-styles/demo-pages.html">
+	<link rel="import" href="../../neon-animation/web-animations.html">
 
 	<link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
 	<link rel="import" href="../../paper-listbox/paper-listbox.html">
@@ -20,7 +21,7 @@
 	<link rel="import" href="../cosmoz-moment-timeago.html">
 
 	<style is="custom-style" include="demo-pages-shared-styles">
-		
+
 
 	</style>
 
@@ -32,7 +33,7 @@
 		<demo-snippet>
 			<template is="dom-bind">
 				<paper-dropdown-menu label="Locale" value="{{ locale }}">
-					<paper-listbox class="dropdown-content" selected="0">
+					<paper-listbox class="dropdown-content" slot="dropdown-content" selected="0">
 						<paper-item>en</paper-item>
 						<paper-item>fr</paper-item>
 						<paper-item>sv</paper-item>
