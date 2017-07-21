@@ -18,6 +18,18 @@ cosmoz-moment is a Polymer component for centralized management of Moment.js wit
 	<link rel="import" href="../paper-item/paper-item.html">
     <link rel="import" href="cosmoz-moment.html">
     <link rel="import" href="cosmoz-moment-timeago.html">
+	<style is="custom-style">
+		paper-dropdown-menu, paper-listbox {
+			width: 100px;
+		}
+		paper-dropdown-menu, .message {
+			margin-left: 20px;
+		}
+
+		paper-dropdown-menu {
+			height: 80px;
+		}
+	</style>
     <div id="container">
       <next-code-block></next-code-block>
     </div>
@@ -35,8 +47,10 @@ cosmoz-moment is a Polymer component for centralized management of Moment.js wit
 		</paper-listbox>
 	</paper-dropdown-menu>
 	<cosmoz-moment locale="[[ locale ]]"></cosmoz-moment>
-	<div><b>Page was loaded</b> <cosmoz-moment-timeago></cosmoz-moment-timeago><br/></div>
-	<div><b>Polymer was created</b> <cosmoz-moment-timeago date="2015-05-27"></cosmoz-moment-timeago><br/></div>
+	<div class="message">
+		<div><b>Page was loaded</b> <cosmoz-moment-timeago></cosmoz-moment-timeago><br/></div>
+		<div><b>Polymer was created</b> <cosmoz-moment-timeago date="2015-05-27"></cosmoz-moment-timeago><br/></div>
+	</div>
 </template>
 ```
 
