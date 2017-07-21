@@ -26,16 +26,18 @@ cosmoz-moment is a Polymer component for centralized management of Moment.js wit
 ```
 -->
 ```html
-<paper-dropdown-menu label="Locale" value="{{ locale }}">
-	<paper-listbox class="dropdown-content" slot="dropdown-content" selected="0">
-		<paper-item>en</paper-item>
-		<paper-item>fr</paper-item>
-		<paper-item>sv</paper-item>
-	</paper-listbox>
-</paper-dropdown-menu>
-<cosmoz-moment locale="[[ locale ]]"></cosmoz-moment>
-<div><b>Page was loaded</b> <cosmoz-moment-timeago></cosmoz-moment-timeago><br/></div>
-<div><b>Polymer was created</b> <cosmoz-moment-timeago date="2015-05-27"></cosmoz-moment-timeago><br/></div>
+<template is="dom-bind">
+	<paper-dropdown-menu label="Locale" value="{{ locale }}">
+		<paper-listbox class="dropdown-content" slot="dropdown-content" selected="0">
+			<paper-item>en</paper-item>
+			<paper-item>fr</paper-item>
+			<paper-item>sv</paper-item>
+		</paper-listbox>
+	</paper-dropdown-menu>
+	<cosmoz-moment locale="[[ locale ]]"></cosmoz-moment>
+	<div><b>Page was loaded</b> <cosmoz-moment-timeago></cosmoz-moment-timeago><br/></div>
+	<div><b>Polymer was created</b> <cosmoz-moment-timeago date="2015-05-27"></cosmoz-moment-timeago><br/></div>
+</template>
 ```
 
 ## Usage
