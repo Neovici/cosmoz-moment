@@ -5,9 +5,9 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 	<title>cosmoz-moment test</title>
-	<script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
-	<script src="../bower_components/web-component-tester/browser.js"></script>
-	<script src="../bower_components/iron-test-helpers/mock-interactions.js"></script>
+	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+	<script src="../../web-component-tester/browser.js"></script>
+	<script src="../../iron-test-helpers/mock-interactions.js"></script>
 	<link rel="import" href="../cosmoz-moment.html">
 </head>
 
@@ -18,9 +18,11 @@
 		</template>
 	</test-fixture>
 
-	<template is="dom-bind" id="custom-locale">
-    	<cosmoz-moment id="cosmozMoment" locale="[[locale]]"></cosmoz-moment>
-  	</template>
+	<test-fixture id="custom-locale">
+		<template>
+    		<cosmoz-moment locale="[[locale]]"></cosmoz-moment>
+		</template>
+	</test-fixture>
 
   <script>
 	suite('cosmoz-moment properties', function () {
@@ -30,18 +32,20 @@
 			assert.equal(baseFixture.is, 'cosmoz-moment');
 		});
 
-		test('get default locale value', function () {
-			assert.isString(baseFixture.locale);
-			assert.equal(baseFixture.locale, "en");
+		test('default locale is `en`', function () {
+			var locale = moment.locale();
+			assert.isString(locale);
+			assert.equal(locale, "en");
 		});
 	});
 
-	suite('binding to locale property', function() {
+	suite('set custom locale property', function() {
+		var customLocale = fixture('custom-locale');
 		test('change locale to French', function () {
-			var scope = document.querySelector('#custom-locale');
-			scope.locale = 'fr';
-			assert.isString(scope.$.cosmozMoment.locale);
-			assert.equal(scope.$.cosmozMoment.locale, 'fr');
+			customLocale.locale = 'fr';
+			assert.isString(locale);
+			assert.equal(locale, 'fr');
+			assert.equal(moment.locale(), 'fr');
 		});
 
 	});
