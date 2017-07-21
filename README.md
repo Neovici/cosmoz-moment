@@ -5,6 +5,39 @@
 
 cosmoz-moment is a Polymer component for centralized management of Moment.js with locale change distributed notification
 
+## Example
+
+<!---
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+	<link rel="import" href="../neon-animation/web-animations.html">
+	<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+	<link rel="import" href="../paper-listbox/paper-listbox.html">
+	<link rel="import" href="../paper-item/paper-item.html">
+    <link rel="import" href="cosmoz-moment.html">
+    <link rel="import" href="cosmoz-moment-timeago.html">
+    <div id="container">
+      <next-code-block></next-code-block>
+    </div>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<paper-dropdown-menu label="Locale" value="{{ locale }}">
+	<paper-listbox class="dropdown-content" slot="dropdown-content" selected="0">
+		<paper-item>en</paper-item>
+		<paper-item>fr</paper-item>
+		<paper-item>sv</paper-item>
+	</paper-listbox>
+</paper-dropdown-menu>
+<cosmoz-moment locale="[[ locale ]]"></cosmoz-moment>
+<div><b>Page was loaded</b> <cosmoz-moment-timeago></cosmoz-moment-timeago><br/></div>
+<div><b>Polymer was created</b> <cosmoz-moment-timeago date="2015-05-27"></cosmoz-moment-timeago><br/></div>
+```
+
 ## Usage
 
 ### Install
@@ -19,11 +52,6 @@ cosmoz-moment is a Polymer component for centralized management of Moment.js wit
 ### Use it inside your element
 ```html
 <cosmoz-moment locale="[[locale]]"></cosmoz-moment>
-```
-
-A `cosmoz-moment` will fire `moment-locale-changed` event when `moment.locale` changed according to external `locale` property. You can catch this event by set event listener:
-```html
-	<cosmoz-moment locale="[[locale]]" on-moment-locale-changed="yourEventHandler"></cosmoz-moment>
 ```
 
 ## Docs
