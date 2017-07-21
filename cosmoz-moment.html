@@ -1,6 +1,6 @@
 <!--
 @license
-Copyright (c) 2015 Neovici AB. All rights reserved.
+Copyright (c) 2017 Neovici AB. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -86,16 +86,9 @@ limitations under the License.
 			properties: {
 				/**
 				 * Locale abbreviation for Moment.js locale
-				 *
-				 * @attribute locale
-				 * @type string
-				 * @default 'en'
 				 */
 				locale: {
 					type: String,
-					value: function () {
-						return locale;
-					},
 					observer: 'localeChanged'
 				}
 			},
