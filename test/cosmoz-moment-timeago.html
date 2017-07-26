@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<title>cosmoz-moment-timeago test</title>
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../web-component-tester/browser.js"></script>
+		<link rel="import" href="../cosmoz-moment-timeago.html">
+	</head>
+
+	<body>
+		<test-fixture id="basic">
+			<template>
+				<cosmoz-moment-timeago></cosmoz-moment-timeagot>
+			</template>
+		</test-fixture>
+
+		<test-fixture id="custom-date">
+			<template>
+				<cosmoz-moment-timeago date="2015-11-10"></cosmoz-moment-timeago>
+			</template>
+		</test-fixture>
+
+		<script>
+			suite('cosmoz-moment-timeago properties', function () {
+				var baseFixture;
+
+				setup(function() {
+					baseFixture = fixture('basic');
+				});
+
+				test('instantiating the element works', function () {
+					assert.equal(baseFixture.is, 'cosmoz-moment-timeago');
+				});
+
+				test('default locale is `en`', function () {
+					var locale = moment.locale();
+					assert.isString(locale);
+					assert.equal(locale, "en");
+				});
+
+				test('date property is instance of Date object', function () {
+					assert.isNotNull(baseFixture.date);
+					assert.instanceOf(baseFixture.date, Date);
+				});
+
+				test('timeago value from today date is not invalid', function () {
+					var timeagoSpan = baseFixture.$$('span');
+					assert.isNotNull(timeagoSpan);
+					assert.isString(timeagoSpan.textContent);
+					assert.notEqual(timeagoSpan.textContent, 'Invalid date', 'date has invalid value');
+				});
+			});
+
+			suite('set date property', function() {
+				var customDate;
+
+				setup(function() {
+					customDate = fixture('custom-date');
+				});
+				
+				test('should show time ago from date', function () {
+					var timeagoSpan = customDate.$$('span');
+					assert.isNotNull(timeagoSpan);
+					assert.isString(timeagoSpan.textContent);
+					assert.notEqual(timeagoSpan.textContent, 'Invalid date', 'date has invalid value');
+				});
+			});
+		</script>
+	</body>
+</html>
