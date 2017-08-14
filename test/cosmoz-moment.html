@@ -27,7 +27,7 @@
 			suite('cosmoz-moment properties', function () {
 				var baseFixture;
 
-				setup(function() {
+				setup(function () {
 					baseFixture = fixture('basic');
 				});
 
@@ -38,17 +38,17 @@
 				test('default locale is `en`', function () {
 					var locale = moment.locale();
 					assert.isString(locale);
-					assert.equal(locale, "en");
+					assert.equal(locale, 'en');
 				});
 			});
 
-			suite('set custom locale property', function() {
+			suite('set custom locale property', function () {
 				var customLocale;
 
-				setup(function() {
+				setup(function () {
 					customLocale = fixture('custom-locale');
 				});
-				
+
 				test('change locale to French', function () {
 					customLocale.locale = 'fr';
 					assert.isString(locale);

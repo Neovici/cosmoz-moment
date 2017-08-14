@@ -27,7 +27,7 @@
 			suite('cosmoz-moment-timeago properties', function () {
 				var baseFixture;
 
-				setup(function() {
+				setup(function () {
 					baseFixture = fixture('basic');
 				});
 
@@ -38,7 +38,7 @@
 				test('default locale is `en`', function () {
 					var locale = moment.locale();
 					assert.isString(locale);
-					assert.equal(locale, "en");
+					assert.equal(locale, 'en');
 				});
 
 				test('date property is instance of Date object', function () {
@@ -54,13 +54,13 @@
 				});
 			});
 
-			suite('set date property', function() {
+			suite('set date property', function () {
 				var customDate;
 
-				setup(function() {
+				setup(function () {
 					customDate = fixture('custom-date');
 				});
-				
+
 				test('should show time ago from date', function () {
 					var timeagoSpan = customDate.$$('span');
 					assert.isNotNull(timeagoSpan);
