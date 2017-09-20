@@ -1,58 +1,61 @@
 <!doctype html>
-<html>
-<head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<title>Cosmoz moment</title>
+		<title>cozmoz-moment</title>
 
-	<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+		<link rel="import" href="../../neon-animation/web-animations.html">
 
-	<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
-	<link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
-	<link rel="import" href="../../paper-styles/demo-pages.html">
-	<link rel="import" href="../../neon-animation/web-animations.html">
+		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
+		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
 
-	<link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
-	<link rel="import" href="../../paper-listbox/paper-listbox.html">
-	<link rel="import" href="../../paper-item/paper-item.html">
+		<link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
+		<link rel="import" href="../../paper-listbox/paper-listbox.html">
+		<link rel="import" href="../../paper-item/paper-item.html">
 
-	<link rel="import" href="../cosmoz-moment.html">
-	<link rel="import" href="../cosmoz-moment-timeago.html">
+		<link rel="import" href="../cosmoz-moment.html">
+		<link rel="import" href="../cosmoz-moment-timeago.html">
 
-	<style is="custom-style" include="demo-pages-shared-styles">
+	</head>
+	<body unresolved>
+		<custom-style>
+			<style is="custom-style" include="demo-pages-shared-styles">
+			</style>
+		</custom-style>
+		<!-- page-wide locale -->
+		<div class="vertical-section-container centered">
+			<h4>Setting a page-wide locale</h4>
+			<demo-snippet>
+				<template>
+					<dom-bind>
+						<template is="dom-bind">
+							<paper-dropdown-menu label="Locale" value="{{ locale }}">
+								<paper-listbox class="dropdown-content" slot="dropdown-content" selected="0">
+									<paper-item>en</paper-item>
+									<paper-item>fr</paper-item>
+									<paper-item>sv</paper-item>
+								</paper-listbox>
+							</paper-dropdown-menu>
+							<cosmoz-moment locale="[[ locale ]]"></cosmoz-moment>
+						</template>
+					</dom-bind>
+				</template>
+			</demo-snippet>
+		</div>
 
+		<!-- page-wide locale -->
+		<div class="vertical-section-container centered">
+			<h4>cosmoz-moment-timeago</h4>
+			<demo-snippet>
+				<template>
+					<b>Page was loaded</b> <cosmoz-moment-timeago></cosmoz-moment-timeago><br/>
+					<b>Polymer was created</b> <cosmoz-moment-timeago date="2015-05-27"></cosmoz-moment-timeago><br/>
+				</template>
+			</demo-snippet>
+		</div>
 
-	</style>
-
-</head>
-<body>
-	<!-- page-wide locale -->
-	<div class="vertical-section-container centered">
-		<h4>Setting a page-wide locale</h4>
-		<demo-snippet>
-			<template is="dom-bind">
-				<paper-dropdown-menu label="Locale" value="{{ locale }}">
-					<paper-listbox class="dropdown-content" selected="0">
-						<paper-item>en</paper-item>
-						<paper-item>fr</paper-item>
-						<paper-item>sv</paper-item>
-					</paper-listbox>
-				</paper-dropdown-menu>
-				<cosmoz-moment locale="[[ locale ]]"></cosmoz-moment>
-			</template>
-		</demo-snippet>
-	</div>
-
-	<!-- page-wide locale -->
-	<div class="vertical-section-container centered">
-		<h4>cosmoz-moment-timeago</h4>
-		<demo-snippet>
-			<template is="dom-bind">
-				<b>Page was loaded</b> <cosmoz-moment-timeago></cosmoz-moment-timeago><br/>
-				<b>Polymer was created</b> <cosmoz-moment-timeago date="2015-05-27"></cosmoz-moment-timeago><br/>
-			</template>
-		</demo-snippet>
-	</div>
-</body>
+	</body>
 </html>
