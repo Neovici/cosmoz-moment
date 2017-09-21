@@ -56,8 +56,8 @@
 
 				test('change locale to French', function () {
 					customLocale.locale = 'fr';
-					assert.isString(locale);
-					assert.equal(locale, 'fr');
+					assert.isString(customLocale.locale);
+					assert.equal(customLocale.locale, 'fr');
 					assert.equal(moment.locale(), 'fr');
 				});
 			});
