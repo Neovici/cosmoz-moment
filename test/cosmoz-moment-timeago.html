@@ -70,6 +70,7 @@
 					var timeagoSpan = customDate.$$('span');
 					assert.isNotNull(timeagoSpan);
 					assert.isString(timeagoSpan.textContent);
+					assert.include(timeagoSpan.textContent, 'years ago');
 					assert.notEqual(timeagoSpan.textContent, 'Invalid date', 'date has invalid value');
 				});
 			});
