@@ -1,12 +1,17 @@
 <!doctype html>
 <html lang="en">
-
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 		<title>cosmoz-moment test</title>
+
 		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
 		<script src="../../web-component-tester/browser.js"></script>
+		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+
+		<link rel="import" href="../../test-fixture/test-fixture.html">
+		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
+
 		<link rel="import" href="../cosmoz-moment.html">
 	</head>
 
@@ -19,7 +24,7 @@
 
 		<test-fixture id="custom-locale">
 			<template>
-				<cosmoz-moment locale="[[locale]]"></cosmoz-moment>
+				<cosmoz-moment locale="[[ locale ]]"></cosmoz-moment>
 			</template>
 		</test-fixture>
 
@@ -51,8 +56,8 @@
 
 				test('change locale to French', function () {
 					customLocale.locale = 'fr';
-					assert.isString(locale);
-					assert.equal(locale, 'fr');
+					assert.isString(customLocale.locale);
+					assert.equal(customLocale.locale, 'fr');
 					assert.equal(moment.locale(), 'fr');
 				});
 			});
