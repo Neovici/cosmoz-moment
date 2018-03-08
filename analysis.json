@@ -47,9 +47,6 @@
           "params": [
             {
               "name": "newLocale"
-            },
-            {
-              "name": "oldLocale"
             }
           ]
         }
