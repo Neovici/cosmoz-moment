@@ -92,7 +92,7 @@ limitations under the License.
 					observer: 'localeChanged'
 				}
 			},
-			localeChanged: function (newLocale, oldLocale) {
+			localeChanged: function (newLocale) {
 				locale = newLocale;
 				moment.locale(locale);
 				momentElements.forEach(function (element) {
