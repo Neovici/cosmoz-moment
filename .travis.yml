@@ -1,34 +1,33 @@
 language: node_js
-node_js: 6
-dist: trusty
-sudo: required
 env:
   global:
-    - CC_TEST_REPORTER_ID=3ba32f4a56a94f331fac9bea3b463ea88b0a36fb8335c2d658c8f37a4f5e8f99
+  - CC_TEST_REPORTER_ID=3ba32f4a56a94f331fac9bea3b463ea88b0a36fb8335c2d658c8f37a4f5e8f99
+  - SAUCE_USERNAME=nomego
+  - secure: W5mOgDyW7Nu1OKZZjEyBJbsbXy2z/Ncm+V4hsCbRWcmgNMJnMQWd6O3LxijUIxbW6v81zvxPpbq+zS/Cht9N7QZRmXH/zq373mgImtNraaM3+IgQ9EXDlQKpHpAuINpGCid9NSHrCQTtzkSZsJbaSaPTEhhbvG/Cp2/FHnUKfUNEA44vfmGw4rDJTdtp5tFPvwJeGsrTZS+FhpUqKoY7dOMzElQgYA5rxDR+l3kMbL6kJwaj2MRpl7BbUAIwUaNlmeCw1StbsVXDZmoUuPOLLYj8INaveIkC0KIjSmBmVAGKHPVPRnmsspCgqof/d50vyST00vHBjZQOdJY61EGczHTxUlseucS489IzbyVZopBXb3ChYS0Hp2BVwB+ozuys2hw9Rb0zOjuXhiprhmzm27M7yo7evHgFlcTK7ceicdvL66JEop77db6AJs9aG7X6ebSHrrwPAU1dN8beSiWSekPhTsP4obU5mxG40Lpyonc5G0PxjJXSpy1wwswr2PEY1kO9VIiIzBb6Y0JuorxcYmmn0TS2e+oHbfDliTRor0pDhOzRb/B9YkUwz+WD2RoCMWHCdr04q6JbnGZvfkag0LmS+Xxw+ZK1GeP39Yjt/GL19OjZzCQ4cNKeIqLWy1C47HONxDymwefV4Oln8FlXO2DGiKlYxcod4I11DcwFqwk=
 addons:
   firefox: latest
   apt:
     sources:
-      - google-chrome
+    - google-chrome
     packages:
-      - google-chrome-stable
+    - google-chrome-stable
 cache:
   yarn: true
   directories:
-    - node_modules
-    - bower_components
-    - bower_components-1.x
-    - ".eslintcache"
-    - "$HOME/.cache/bower"
+  - node_modules
+  - bower_components
+  - ".eslintcache"
+  - "$HOME/.cache/bower"
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
-  - yarn run lint
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
+- yarn run lint
 script:
-  - xvfb-run yarn test
+- yarn test
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+- "./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT"
 notifications:
   slack:
     secure: GKDgyeDDH9wNyaGacdERda7PilH2L1q0uHuQs1EzE94hEYerENmohfI7TlutTuVmT86mmpT4QYEelYoO+N3GT0XnZ3Cv5nSYuOA20eYqE95dfe9V82bFQEK0do4aH3tFwDP1kKv/jzycbKGM9DRLfD+GdQQWH0o079KHL+VzF4cuQGNI8p1rWflvDEc/Y+F6gLp2KeFrDfiZ4Ic3w4+UndSQZrj7EWrfpuzrhqVQtoJPvXBBNyieLckgfUhI4do/esox/VeDYo12Qd6ItcujiuqYj+q18MrYNIA1ziRvMNcdixtnXI68Hytt0F+EeQ1ZiUOp9HuhmXXymPwxG5ZrlgPuZ+52wunO4uzGLwB8ila/Eu88u4kJL5FIso+lXgPNtD+BrShuLiQv1rmWVZ9e/AWzcevvHkL+eeed1kkV3mtXNZRBp5uGBaLSNUOfc3ZyZv3jTD6uY6rY6GZVYQeRN0rBHUFB2Cd1Bi9gCL2AvxFmsJBYR7p/Ip38qeh+yUkJH7dwvoCcj8kNqx+l8Zj86xNyWW/9tFh72R4KPtk9YvQYjGn0QVjym0QiwCgNKyPmN/tFKIjL2x+IBL939wzYQGFIaE/n11c2UQxuSk/1xhcbNsCIucFato+bR3UtwoXbQ3SZUf1yDzTZtx6/ewfbljndIXmv2tTs1F1bCqJek0Y=
