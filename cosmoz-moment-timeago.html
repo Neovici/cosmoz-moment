@@ -5,48 +5,51 @@
 </dom-module>
 
 <script type="text/javascript">
-	(function () {
+	class CosmozMomentTimeago extends Polymer.mixinBehaviors([
+		Cosmoz.MomentBehavior
+	], Polymer.Element) {
 
-		Polymer({
+		static get is() {
+			return 'cosmoz-moment-timeago';
+		}
 
-			is: 'cosmoz-moment-timeago',
+		static get observers() {
+			return [
+				'refreshIntervalChanged(refreshInterval)'
+			];
+		}
 
-			behaviors: [
-				Cosmoz.MomentBehavior
-			],
-
-			properties: {
+		static get properties() {
+			return {
 				date: {
 					type: Date,
-					value: function () {
-						return new Date();
-					}
+					value: () => new Date()
+				},
+				_intervalId: {
+					type: Number,
+					value: null
 				},
 				refreshInterval: {
 					type: Number,
-					value: 60000,
-					observer: 'refreshIntervalChanged'
+					value: 60000
 				},
 				_kicker: {
 					type: Number,
 					value: 0
 				}
-			},
+			};
+		}
 
-			// Local properties
-			_intervalId: null,
+		disconnectedCallback() {
+			super.disconnectedCallback();
+			window.clearInterval(this._intervalId);
+		}
 
-			detached: function () {
-				window.clearInterval(this._intervalId);
-			},
-
-			refreshIntervalChanged: function () {
-				window.clearInterval(this._intervalId);
-				this._intervalId = window.setInterval(function () {
-					this._kicker += 1;
-				}.bind(this), this.refreshInterval);
-			}
-
-		});
-	})();
+		refreshIntervalChanged(refreshInterval) {
+			this.set('_intervalId', window.setInterval(function () {
+				this._kicker += 1;
+			}.bind(this), refreshInterval));
+		}
+	}
+	customElements.define(CosmozMomentTimeago.is, CosmozMomentTimeago);
 </script>

@@ -29,32 +29,28 @@
 		</test-fixture>
 
 		<script>
-			suite('cosmoz-moment properties', function () {
-				var baseFixture;
+			suite('cosmoz-moment properties', () => {
+				let baseFixture;
 
-				setup(function () {
+				setup(() => {
 					baseFixture = fixture('basic');
 				});
 
-				test('instantiating the element works', function () {
-					assert.equal(baseFixture.is, 'cosmoz-moment');
-				});
-
-				test('default locale is `en`', function () {
-					var locale = moment.locale();
+				test('default locale is `en`', () => {
+					const locale = moment.locale();
 					assert.isString(locale);
 					assert.equal(locale, 'en');
 				});
 			});
 
-			suite('set custom locale property', function () {
-				var customLocale;
+			suite('set custom locale property', () => {
+				let customLocale;
 
-				setup(function () {
+				setup(() => {
 					customLocale = fixture('custom-locale');
 				});
 
-				test('change locale to French', function () {
+				test('change locale to French', () => {
 					customLocale.locale = 'fr';
 					assert.isString(customLocale.locale);
 					assert.equal(customLocale.locale, 'fr');
