@@ -31,16 +31,13 @@ limitations under the License.
 		window.Cosmoz = window.Cosmoz || {};
 
 		const localSharedMoment = moment(),
-			locale = 'en',
 			momentElements = [];
 
 		/** @polymerBehavior */
 		Cosmoz.MomentBehavior = {
 			properties: {
 				locale: {
-					type: String,
-					readOnly: true,
-					value: () => locale
+					type: String
 				},
 				moment: {
 					type: Object,
@@ -57,14 +54,15 @@ limitations under the License.
 				}
 			},
 			_ensureDate(date) {
-				if (date == null) {
+				let dateDate;
+				if (date === undefined) {
 					return;
 				}
 				if (date instanceof Date) {
 					return date;
 				}
 				try {
-					const dateDate = new Date(date);
+					dateDate = new Date(date);
 				} catch (err) {
 					return;
 				}

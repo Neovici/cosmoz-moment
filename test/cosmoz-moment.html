@@ -30,12 +30,6 @@
 
 		<script>
 			suite('cosmoz-moment properties', () => {
-				let baseFixture;
-
-				setup(() => {
-					baseFixture = fixture('basic');
-				});
-
 				test('default locale is `en`', () => {
 					const locale = moment.locale();
 					assert.isString(locale);

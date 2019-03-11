@@ -5,6 +5,9 @@
 </dom-module>
 
 <script type="text/javascript">
+	/*global Cosmoz*/
+	const locale = 'en';
+
 	class CosmozMomentTimeago extends Polymer.mixinBehaviors([
 		Cosmoz.MomentBehavior
 	], Polymer.Element) {
@@ -36,6 +39,11 @@
 				_kicker: {
 					type: Number,
 					value: 0
+				},
+				locale: {
+					type: String,
+					readOnly: true,
+					value: () => locale
 				}
 			};
 		}
@@ -49,6 +57,9 @@
 			this.set('_intervalId', window.setInterval(function () {
 				this._kicker += 1;
 			}.bind(this), refreshInterval));
+		}
+		timeago(rawDate, locale) {
+			return Cosmoz.MomentBehavior.timeago(rawDate, locale);
 		}
 	}
 	customElements.define(CosmozMomentTimeago.is, CosmozMomentTimeago);
