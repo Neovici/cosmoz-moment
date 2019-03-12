@@ -31,7 +31,7 @@ limitations under the License.
 		window.Cosmoz = window.Cosmoz || {};
 
 		const LOCAL_SHARED_MOMENT = moment(),
-			momentElements = [];
+			MOMENT_ELEMENTS = [];
 
 		/** @polymerBehavior */
 		Cosmoz.MomentBehavior = {
@@ -45,12 +45,12 @@ limitations under the License.
 				}
 			},
 			attached() {
-				momentElements.push(this);
+				MOMENT_ELEMENTS.push(this);
 			},
 			detached() {
-				const i = momentElements.indexOf(this);
+				const i = MOMENT_ELEMENTS.indexOf(this);
 				if (i >= 0) {
-					momentElements.splice(i, 1);
+					MOMENT_ELEMENTS.splice(i, 1);
 				}
 			},
 			_ensureDate(date) {
@@ -103,7 +103,7 @@ limitations under the License.
 			localeChanged(newLocale) {
 				let locale = newLocale;
 				moment.locale(locale);
-				momentElements.forEach(element => element._setLocale(locale));
+				MOMENT_ELEMENTS.forEach(element => element._setLocale(locale));
 			}
 		}
 		customElements.define(CosmozMoment.is, CosmozMoment);
