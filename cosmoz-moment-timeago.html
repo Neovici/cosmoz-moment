@@ -5,48 +5,62 @@
 </dom-module>
 
 <script type="text/javascript">
-	(function () {
+	/*global Cosmoz*/
+	const LOCALE = 'en';
 
-		Polymer({
+	class CosmozMomentTimeago extends Polymer.mixinBehaviors([
+		Cosmoz.MomentBehavior
+	], Polymer.Element) {
 
-			is: 'cosmoz-moment-timeago',
+		static get is() {
+			return 'cosmoz-moment-timeago';
+		}
 
-			behaviors: [
-				Cosmoz.MomentBehavior
-			],
+		static get observers() {
+			return [
+				'refreshIntervalChanged(refreshInterval)'
+			];
+		}
 
-			properties: {
+		static get properties() {
+			return {
 				date: {
 					type: Date,
-					value: function () {
-						return new Date();
-					}
+					value: () => new Date()
+				},
+				_intervalId: {
+					type: Number,
+					value: null
 				},
 				refreshInterval: {
 					type: Number,
-					value: 60000,
-					observer: 'refreshIntervalChanged'
+					value: 60000
 				},
 				_kicker: {
 					type: Number,
 					value: 0
+				},
+				locale: {
+					type: String,
+					readOnly: true,
+					value: () => LOCALE
 				}
-			},
+			};
+		}
 
-			// Local properties
-			_intervalId: null,
+		disconnectedCallback() {
+			super.disconnectedCallback();
+			window.clearInterval(this._intervalId);
+		}
 
-			detached: function () {
-				window.clearInterval(this._intervalId);
-			},
-
-			refreshIntervalChanged: function () {
-				window.clearInterval(this._intervalId);
-				this._intervalId = window.setInterval(function () {
-					this._kicker += 1;
-				}.bind(this), this.refreshInterval);
-			}
-
-		});
-	})();
+		refreshIntervalChanged(refreshInterval) {
+			this.set('_intervalId', window.setInterval(function () {
+				this._kicker += 1;
+			}.bind(this), refreshInterval));
+		}
+		timeago(rawDate, locale) {
+			return Cosmoz.MomentBehavior.timeago(rawDate, locale);
+		}
+	}
+	customElements.define(CosmozMomentTimeago.is, CosmozMomentTimeago);
 </script>

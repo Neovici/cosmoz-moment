@@ -12,7 +12,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 -->
 
-<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../polymer/polymer-element.html">
 
 <!--`<cosmoz-moment>` is a Polymer component for centralized management of Moment.js with locale change distributed notification which very easy to use.
 
@@ -30,42 +30,31 @@ limitations under the License.
 
 		window.Cosmoz = window.Cosmoz || {};
 
-		var localSharedMoment = moment(),
-			locale = 'en',
-			momentElements = [];
+		const LOCAL_SHARED_MOMENT = moment(),
+			MOMENT_ELEMENTS = [];
 
 		/** @polymerBehavior */
 		Cosmoz.MomentBehavior = {
 			properties: {
 				locale: {
-					type: String,
-					readOnly: true,
-					value: function () {
-						return locale;
-					}
+					type: String
 				},
 				moment: {
 					type: Object,
-					value: localSharedMoment
+					value: LOCAL_SHARED_MOMENT
 				}
 			},
-			attached: function () {
-				momentElements.push(this);
+			attached() {
+				MOMENT_ELEMENTS.push(this);
 			},
-			detached: function () {
-				var i = momentElements.indexOf(this);
+			detached() {
+				const i = MOMENT_ELEMENTS.indexOf(this);
 				if (i >= 0) {
-					momentElements.splice(i, 1);
+					MOMENT_ELEMENTS.splice(i, 1);
 				}
 			},
-			timeago: function (rawDate, locale) {
-				var date = this._ensureDate(rawDate);
-				if (!date) {
-					return '';
-				}
-				return moment(date).locale(locale).fromNow();
-			},
-			_ensureDate: function (date) {
+			_ensureDate(date) {
+				let dateDate;
 				if (date === undefined) {
 					return;
 				}
@@ -73,32 +62,50 @@ limitations under the License.
 					return date;
 				}
 				try {
-					var dateDate = new Date(date);
+					dateDate = new Date(date);
 				} catch (err) {
 					return;
 				}
 				return dateDate;
-			}
+			},
+			timeago(rawDate, locale) {
+				const date = this._ensureDate(rawDate);
+				if (!date) {
+					return '';
+				}
+				return moment(date).locale(locale).fromNow();
+			},
 		};
 
-		Polymer({
-			is: 'cosmoz-moment',
-			properties: {
-				/**
-				 * Locale abbreviation for Moment.js locale
-				 */
-				locale: {
-					type: String,
-					observer: 'localeChanged'
-				}
-			},
-			localeChanged: function (newLocale) {
-				locale = newLocale;
-				moment.locale(locale);
-				momentElements.forEach(function (element) {
-					element._setLocale(locale);
-				});
+		class CosmozMoment extends Polymer.Element {
+
+			static get is() {
+				return 'cosmoz-moment';
 			}
-		});
+
+			static get observers() {
+				return [
+					'localeChanged(locale)'
+				];
+			}
+
+			static get properties() {
+				return {
+					/**
+					* Locale abbreviation for Moment.js locale
+					*/
+					locale: {
+						type: String
+					}
+				};
+			}
+
+			localeChanged(newLocale) {
+				let locale = newLocale;
+				moment.locale(locale);
+				MOMENT_ELEMENTS.forEach(element => element._setLocale(locale));
+			}
+		}
+		customElements.define(CosmozMoment.is, CosmozMoment);
 	</script>
 </dom-module>

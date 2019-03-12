@@ -29,45 +29,41 @@
 		</test-fixture>
 
 		<script>
-			suite('cosmoz-moment-timeago properties', function () {
-				var baseFixture;
+			suite('cosmoz-moment-timeago properties', () => {
+				let baseFixture;
 
-				setup(function () {
+				setup(() => {
 					baseFixture = fixture('basic');
 				});
 
-				test('instantiating the element works', function () {
-					assert.equal(baseFixture.is, 'cosmoz-moment-timeago');
-				});
-
-				test('default locale is `en`', function () {
-					var locale = moment.locale();
+				test('default locale is `en`', () => {
+					const locale = moment.locale();
 					assert.isString(locale);
 					assert.equal(locale, 'en');
 				});
 
-				test('date property is instance of Date object', function () {
+				test('date property is instance of Date object', () => {
 					assert.isNotNull(baseFixture.date);
 					assert.instanceOf(baseFixture.date, Date);
 				});
 
-				test('timeago value from today date is not invalid', function () {
-					var timeagoSpan = baseFixture.$$('span');
+				test('timeago value from today date is not invalid', () => {
+					const timeagoSpan = baseFixture.$$('span');
 					assert.isNotNull(timeagoSpan);
 					assert.isString(timeagoSpan.textContent);
 					assert.notEqual(timeagoSpan.textContent, 'Invalid date', 'date has invalid value');
 				});
 			});
 
-			suite('set date property', function () {
-				var customDate;
+			suite('set date property', () => {
+				let customDate;
 
-				setup(function () {
+				setup(() => {
 					customDate = fixture('custom-date');
 				});
 
-				test('should show time ago from date', function () {
-					var timeagoSpan = customDate.$$('span');
+				test('should show time ago from date', () => {
+					const timeagoSpan = customDate.$$('span');
 					assert.isNotNull(timeagoSpan);
 					assert.isString(timeagoSpan.textContent);
 					assert.include(timeagoSpan.textContent, 'years ago');
