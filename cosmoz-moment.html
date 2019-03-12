@@ -30,7 +30,7 @@ limitations under the License.
 
 		window.Cosmoz = window.Cosmoz || {};
 
-		const localSharedMoment = moment(),
+		const LOCAL_SHARED_MOMENT = moment(),
 			momentElements = [];
 
 		/** @polymerBehavior */
@@ -41,7 +41,7 @@ limitations under the License.
 				},
 				moment: {
 					type: Object,
-					value: localSharedMoment
+					value: LOCAL_SHARED_MOMENT
 				}
 			},
 			attached() {

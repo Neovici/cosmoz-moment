@@ -6,7 +6,7 @@
 
 <script type="text/javascript">
 	/*global Cosmoz*/
-	const locale = 'en';
+	const LOCALE = 'en';
 
 	class CosmozMomentTimeago extends Polymer.mixinBehaviors([
 		Cosmoz.MomentBehavior
@@ -43,7 +43,7 @@
 				locale: {
 					type: String,
 					readOnly: true,
-					value: () => locale
+					value: () => LOCALE
 				}
 			};
 		}
