@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "polymer serve -o",
-    "lint": "eslint --cache --ext .js,.html . && polymer lint cosmoz-*.html",
+    "lint": "eslint --cache --ext .js . && polymer lint cosmoz-*.js",
     "test": "polymer test",
     "analyze": "polymer analyze --input cosmoz-*.html > analysis.json"
   },
