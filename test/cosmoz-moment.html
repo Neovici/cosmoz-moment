@@ -36,20 +36,16 @@
 			import '../cosmoz-moment.js';
 			import moment from 'moment';
 			import 'moment/src/locale/fr';
-			
-			suite('cosmoz-moment properties', () => {
-				test('default locale is `en`', () => {
-					const locale = moment.locale();
-					assert.isString(locale);
-					assert.equal(locale, 'en');
-				});
-			});
 
 			suite('set custom locale property', () => {
 				let customLocale;
 
 				setup(() => {
 					customLocale = fixture('custom-locale');
+				});
+
+				test('default locale is en', () => {
+					assert.equal(customLocale.locale, 'en');
 				});
 
 				test('change locale to French', () => {

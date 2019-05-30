@@ -94,7 +94,8 @@ class CosmozMoment extends PolymerElement {
 			* Locale abbreviation for Moment.js locale
 			*/
 			locale: {
-				type: String
+				type: String,
+				value: 'en'
 			}
 		};
 	}
