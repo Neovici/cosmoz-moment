@@ -13,7 +13,7 @@ limitations under the License.
 */
 import { PolymerElement } from '../@polymer/polymer/polymer-element.js';
 
-import '../moment/min/moment-with-locales.min.js';
+import moment from 'moment';
 /*global Cosmoz, moment*/
 
 window.Cosmoz = window.Cosmoz || {};
