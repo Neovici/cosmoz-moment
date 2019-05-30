@@ -5,6 +5,11 @@ import { PolymerElement } from '../@polymer/polymer/polymer-element.js';
 /*global Cosmoz*/
 const LOCALE = 'en';
 
+/**
+ * @polymer
+ * @customElement
+ * @extends PolymerElement
+ */
 class CosmozMomentTimeago extends mixinBehaviors([
 	Cosmoz.MomentBehavior
 ], PolymerElement) {

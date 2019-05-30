@@ -11,20 +11,6 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-/**`<cosmoz-moment>` is a Polymer component for centralized management of Moment.js with locale change distributed notification which very easy to use.
-
-		<cosmoz-moment locale="[[locale]]"></cosmoz-moment>
-
-@group Cosmoz Elements
-@element cosmoz-moment
-@demo demo/index.html
-@homepage github.com/Neovici/cosmoz-moment
-*/
-/*
-	FIXME(polymer-modulizer): the above comments were extracted
-	from HTML and may be out of place here. Review them and
-	then delete this comment!
-*/
 import { PolymerElement } from '../@polymer/polymer/polymer-element.js';
 
 import '../moment/min/moment-with-locales.min.js';
@@ -79,6 +65,17 @@ Cosmoz.MomentBehavior = {
 	},
 };
 
+/**
+ * `<cosmoz-moment>` is a Polymer component for centralized management of Moment.js with locale change distributed notification which very easy to use.
+ *
+ * `<cosmoz-moment locale="[[locale]]"></cosmoz-moment>`
+ * @extends PolymerElement
+ * @group Cosmoz Elements
+ * @polymer
+ * @customElement
+ * @demo demo/index.html
+ * @homepage github.com/Neovici/cosmoz-moment
+ */
 class CosmozMoment extends PolymerElement {
 
 	static get is() {

@@ -35,7 +35,7 @@
     "start": "polymer serve -o",
     "lint": "eslint --cache --ext .js . && polymer lint cosmoz-*.js",
     "test": "polymer test",
-    "analyze": "polymer analyze --input cosmoz-*.html > analysis.json"
+    "analyze": "polymer analyze --input cosmoz-*.js > analysis.json"
   },
   "author": "Neovici Development",
   "license": "Apache-2.0",
