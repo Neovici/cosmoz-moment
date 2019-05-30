@@ -17,8 +17,7 @@
 			"dir": "./coverage",
 			"reporters": ["text-summary", "lcov"],
 			"include": [
-				"cosmoz-moment-timeago.html",
-				"cosmoz-moment.html"
+				"**/cosmoz-*.js"
 			],
 			"exclude": []
 		},

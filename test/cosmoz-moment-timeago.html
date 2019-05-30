@@ -5,8 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 		<title>cosmoz-moment-timeago test</title>
 
+		<script src="/components/mocha/mocha.js"></script>
+		<script src="/components/wct-mocha/wct-mocha.js"></script>
+		<script src="/components/chai/chai.js"></script>
 		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
-		<script src="../../wct-browser-legacy/browser.js"></script>
 		<script src="../../@polymer/test-fixture/test-fixture-mocha.js"></script>
 
 		<script type="module" src="../../@polymer/test-fixture/test-fixture.js"></script>
@@ -29,50 +31,52 @@
 		</test-fixture>
 
 		<script type="module">
-import '../../@polymer/test-fixture/test-fixture.js';
-import '../../@polymer/iron-test-helpers/iron-test-helpers.js';
-import '../cosmoz-moment-timeago.js';
-suite('cosmoz-moment-timeago properties', () => {
-	let baseFixture;
+			import '../../@polymer/test-fixture/test-fixture.js';
+			import '../../@polymer/iron-test-helpers/iron-test-helpers.js';
+			import '../cosmoz-moment-timeago.js';
+			import moment from 'moment';
 
-	setup(() => {
-		baseFixture = fixture('basic');
-	});
+			suite('cosmoz-moment-timeago properties', () => {
+				let baseFixture;
 
-	test('default locale is `en`', () => {
-		const locale = moment.locale();
-		assert.isString(locale);
-		assert.equal(locale, 'en');
-	});
+				setup(() => {
+					baseFixture = fixture('basic');
+				});
 
-	test('date property is instance of Date object', () => {
-		assert.isNotNull(baseFixture.date);
-		assert.instanceOf(baseFixture.date, Date);
-	});
+				test('default locale is `en`', () => {
+					const locale = moment.locale();
+					assert.isString(locale);
+					assert.equal(locale, 'en');
+				});
 
-	test('timeago value from today date is not invalid', () => {
-		const timeagoSpan = baseFixture.$$('span');
-		assert.isNotNull(timeagoSpan);
-		assert.isString(timeagoSpan.textContent);
-		assert.notEqual(timeagoSpan.textContent, 'Invalid date', 'date has invalid value');
-	});
-});
+				test('date property is instance of Date object', () => {
+					assert.isNotNull(baseFixture.date);
+					assert.instanceOf(baseFixture.date, Date);
+				});
 
-suite('set date property', () => {
-	let customDate;
+				test('timeago value from today date is not invalid', () => {
+					const timeagoSpan = baseFixture.$$('span');
+					assert.isNotNull(timeagoSpan);
+					assert.isString(timeagoSpan.textContent);
+					assert.notEqual(timeagoSpan.textContent, 'Invalid date', 'date has invalid value');
+				});
+			});
 
-	setup(() => {
-		customDate = fixture('custom-date');
-	});
+			suite('set date property', () => {
+				let customDate;
 
-	test('should show time ago from date', () => {
-		const timeagoSpan = customDate.$$('span');
-		assert.isNotNull(timeagoSpan);
-		assert.isString(timeagoSpan.textContent);
-		assert.include(timeagoSpan.textContent, 'years ago');
-		assert.notEqual(timeagoSpan.textContent, 'Invalid date', 'date has invalid value');
-	});
-});
-</script>
+				setup(() => {
+					customDate = fixture('custom-date');
+				});
+
+				test('should show time ago from date', () => {
+					const timeagoSpan = customDate.$$('span');
+					assert.isNotNull(timeagoSpan);
+					assert.isString(timeagoSpan.textContent);
+					assert.include(timeagoSpan.textContent, 'years ago');
+					assert.notEqual(timeagoSpan.textContent, 'Invalid date', 'date has invalid value');
+				});
+			});
+		</script>
 	</body>
 </html>
