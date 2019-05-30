@@ -1,37 +1,55 @@
 {
-	"name": "cosmoz-moment",
-	"version": "1.0.0",
-	"description": "[![Build Status](https://travis-ci.org/Neovici/cosmoz-moment.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-moment)",
-	"main": "cosmoz-moment.html",
-	"directories": {
-		"test": "test"
-	},
-	"devDependencies": {
-		"eslint": "^4.10.0",
-		"eslint-plugin-html": "^3.2.2",
-		"eslint-plugin-mocha": "^4.11.0",
-		"polymer-cli": "^1.8.0",
-		"web-component-tester-istanbul": "Neovici/web-component-tester-istanbul"
-	},
-	"scripts": {
-		"start": "polymer serve -o",
-		"postinstall": "polymer install",
-		"lint": "eslint --cache --ext .js,.html . && polymer lint cosmoz-*.html",
-		"test": "polymer test",
-		"analyze": "polymer analyze --input cosmoz-*.html > analysis.json"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/neovici/cosmoz-moment.git"
-	},
-	"keywords": [
-		"polymer",
-		"web-components"
-	],
-	"author": "",
-	"license": "Apache-2.0",
-	"bugs": {
-		"url": "https://github.com/neovici/cosmoz-moment/issues"
-	},
-	"homepage": "https://github.com/neovici/cosmoz-moment#readme"
+  "description": "[![Build Status](https://travis-ci.org/Neovici/cosmoz-moment.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-moment)",
+  "keywords": [
+    "polymer",
+    "web-components"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neovici/cosmoz-moment.git"
+  },
+  "homepage": "https://github.com/neovici/cosmoz-moment#readme",
+  "name": "cosmoz-moment",
+  "version": "1.0.0",
+  "main": "cosmoz-moment.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "eslint": "^4.10.0",
+    "eslint-plugin-html": "^3.2.2",
+    "eslint-plugin-mocha": "^4.11.0",
+    "polymer-cli": "^1.8.0",
+    "web-component-tester-istanbul": "Neovici/web-component-tester-istanbul",
+    "@polymer/paper-dropdown-menu": "^3.0.0",
+    "@polymer/paper-listbox": "^3.0.0",
+    "@polymer/paper-item": "^3.0.0",
+    "@polymer/iron-component-page": "^4.0.0",
+    "@polymer/iron-demo-helpers": "^3.0.0",
+    "@polymer/iron-test-helpers": "^3.0.0",
+    "wct-browser-legacy": "^1.0.1",
+    "web-animations-js": "^2.3.1",
+    "@webcomponents/webcomponentsjs": "^2.0.0"
+  },
+  "scripts": {
+    "start": "polymer serve -o",
+    "postinstall": "polymer install",
+    "lint": "eslint --cache --ext .js,.html . && polymer lint cosmoz-*.html",
+    "test": "polymer test",
+    "analyze": "polymer analyze --input cosmoz-*.html > analysis.json"
+  },
+  "author": "Neovici Development",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/neovici/cosmoz-moment/issues"
+  },
+  "resolutions": {
+    "inherits": "2.0.3",
+    "samsam": "1.1.3",
+    "supports-color": "3.1.2",
+    "type-detect": "1.0.0"
+  },
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0"
+  }
 }

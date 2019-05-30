@@ -6,27 +6,44 @@
 
 		<title>cozmoz-moment</title>
 
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<link rel="import" href="../../neon-animation/web-animations.html">
+		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script type="module" src="../../@polymer/neon-animation/web-animations.js"></script>
 
-		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
-		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
+		<script type="module" src="../../@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+		<script type="module" src="../../@polymer/iron-demo-helpers/demo-snippet.js"></script>
 
-		<link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
-		<link rel="import" href="../../paper-listbox/paper-listbox.html">
-		<link rel="import" href="../../paper-item/paper-item.html">
+		<script type="module" src="../../@polymer/paper-dropdown-menu/paper-dropdown-menu.js"></script>
+		<script type="module" src="../../@polymer/paper-listbox/paper-listbox.js"></script>
+		<script type="module" src="../../@polymer/paper-item/paper-item.js"></script>
 
-		<link rel="import" href="../cosmoz-moment.html">
-		<link rel="import" href="../cosmoz-moment-timeago.html">
+		<script type="module" src="../cosmoz-moment.js"></script>
+		<script type="module" src="../cosmoz-moment-timeago.js"></script>
 
 	</head>
 	<body unresolved>
-		<custom-style>
+		<!-- FIXME(polymer-modulizer):
+				These imperative modules that innerHTML your HTML are
+				a hacky way to be sure that any mixins in included style
+				modules are ready before any elements that reference them are
+				instantiated, otherwise the CSS @apply mixin polyfill won't be
+				able to expand the underlying CSS custom properties.
+				See: https://github.com/Polymer/polymer-modulizer/issues/154
+				-->
+		<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles">
 			</style>
-		</custom-style>
+		</custom-style>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 		<!-- page-wide locale -->
-		<div class="vertical-section-container centered">
+		<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
 			<h4>Setting a page-wide locale</h4>
 			<demo-snippet>
 				<template>
@@ -44,18 +61,27 @@
 					</dom-bind>
 				</template>
 			</demo-snippet>
-		</div>
+		</div>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 
 		<!-- page-wide locale -->
-		<div class="vertical-section-container centered">
+		<script type="module">
+const $_documentContainer = document.createElement('template');
+
+$_documentContainer.innerHTML = `<div class="vertical-section-container centered">
 			<h4>cosmoz-moment-timeago</h4>
 			<demo-snippet>
 				<template>
-					<b>Page was loaded</b> <cosmoz-moment-timeago></cosmoz-moment-timeago><br/>
-					<b>Polymer was created</b> <cosmoz-moment-timeago date="2015-05-27"></cosmoz-moment-timeago><br/>
+					<b>Page was loaded</b> <cosmoz-moment-timeago></cosmoz-moment-timeago><br>
+					<b>Polymer was created</b> <cosmoz-moment-timeago date="2015-05-27"></cosmoz-moment-timeago><br>
 				</template>
 			</demo-snippet>
-		</div>
+		</div>`;
+
+document.body.appendChild($_documentContainer.content);
+</script>
 
 	</body>
 </html>

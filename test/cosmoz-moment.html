@@ -5,14 +5,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 		<title>cosmoz-moment test</title>
 
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<script src="../../web-component-tester/browser.js"></script>
-		<script src="../../test-fixture/test-fixture-mocha.js"></script>
+		<script src="../../@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="../../wct-browser-legacy/browser.js"></script>
+		<script src="../../@polymer/test-fixture/test-fixture-mocha.js"></script>
 
-		<link rel="import" href="../../test-fixture/test-fixture.html">
-		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
+		<script type="module" src="../../@polymer/test-fixture/test-fixture.js"></script>
+		<script type="module" src="../../@polymer/iron-test-helpers/iron-test-helpers.js"></script>
 
-		<link rel="import" href="../cosmoz-moment.html">
+		<script type="module" src="../cosmoz-moment.js"></script>
 	</head>
 
 	<body>
@@ -28,29 +28,32 @@
 			</template>
 		</test-fixture>
 
-		<script>
-			suite('cosmoz-moment properties', () => {
-				test('default locale is `en`', () => {
-					const locale = moment.locale();
-					assert.isString(locale);
-					assert.equal(locale, 'en');
-				});
-			});
+		<script type="module">
+import '../../@polymer/test-fixture/test-fixture.js';
+import '../../@polymer/iron-test-helpers/iron-test-helpers.js';
+import '../cosmoz-moment.js';
+suite('cosmoz-moment properties', () => {
+	test('default locale is `en`', () => {
+		const locale = moment.locale();
+		assert.isString(locale);
+		assert.equal(locale, 'en');
+	});
+});
 
-			suite('set custom locale property', () => {
-				let customLocale;
+suite('set custom locale property', () => {
+	let customLocale;
 
-				setup(() => {
-					customLocale = fixture('custom-locale');
-				});
+	setup(() => {
+		customLocale = fixture('custom-locale');
+	});
 
-				test('change locale to French', () => {
-					customLocale.locale = 'fr';
-					assert.isString(customLocale.locale);
-					assert.equal(customLocale.locale, 'fr');
-					assert.equal(moment.locale(), 'fr');
-				});
-			});
-		</script>
+	test('change locale to French', () => {
+		customLocale.locale = 'fr';
+		assert.isString(customLocale.locale);
+		assert.equal(customLocale.locale, 'fr');
+		assert.equal(moment.locale(), 'fr');
+	});
+});
+</script>
 	</body>
 </html>
