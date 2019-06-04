@@ -1,7 +1,7 @@
 import './cosmoz-moment.js';
-import { html } from '../@polymer/polymer/lib/utils/html-tag.js';
-import { mixinBehaviors } from '../@polymer/polymer/lib/legacy/class.js';
-import { PolymerElement } from '../@polymer/polymer/polymer-element.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag';
+import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class';
+import { PolymerElement } from '@polymer/polymer/polymer-element';
 /*global Cosmoz*/
 const LOCALE = 'en';
 
