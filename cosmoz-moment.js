@@ -14,7 +14,7 @@ limitations under the License.
 import { PolymerElement } from '../@polymer/polymer/polymer-element.js';
 
 import moment from 'moment';
-/*global Cosmoz, moment*/
+/*global Cosmoz*/
 
 window.Cosmoz = window.Cosmoz || {};
 
