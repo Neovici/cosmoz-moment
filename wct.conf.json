@@ -1,7 +1,7 @@
 {
 	"plugins": {
 		"local": {
-			"browsers": ["chrome"],
+			"browsers": ["chrome", "firefox"],
 				"browserOptions": {
 					"chrome": [
 						"headless",
@@ -26,6 +26,10 @@
 				"browserName": "chrome",
 				"platform": "Windows 10",
 				"version": "beta"
+			}, {
+				"browserName": "firefox",
+				"platform": "Windows 10",
+				"version": ""
 			}, {
 				"browserName": "safari",
 				"platform": "macOS 10.13",
