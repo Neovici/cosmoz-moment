@@ -62,7 +62,7 @@ Cosmoz.MomentBehavior = {
 			return '';
 		}
 		return moment(date).locale(locale).fromNow();
-	},
+	}
 };
 
 /**
@@ -101,7 +101,7 @@ class CosmozMoment extends PolymerElement {
 	}
 
 	localeChanged(newLocale) {
-		let locale = newLocale;
+		const locale = newLocale;
 		moment.locale(locale);
 		MOMENT_ELEMENTS.forEach(element => element._setLocale(locale));
 	}

@@ -61,9 +61,9 @@ class CosmozMomentTimeago extends mixinBehaviors([
 	}
 
 	refreshIntervalChanged(refreshInterval) {
-		this.set('_intervalId', window.setInterval(function () {
+		this.set('_intervalId', window.setInterval(() => {
 			this._kicker += 1;
-		}.bind(this), refreshInterval));
+		}, refreshInterval));
 	}
 	timeago(rawDate, locale) {
 		return Cosmoz.MomentBehavior.timeago(rawDate, locale);
