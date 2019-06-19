@@ -51,7 +51,7 @@
 				});
 
 				test('timeago value from today date is not invalid', () => {
-					const timeagoSpan = baseFixture.$$('span');
+					const timeagoSpan = baseFixture.shadowRoot.querySelector('span');
 					assert.isNotNull(timeagoSpan);
 					assert.isString(timeagoSpan.textContent);
 					assert.notEqual(timeagoSpan.textContent, 'Invalid date', 'date has invalid value');
@@ -66,7 +66,7 @@
 				});
 
 				test('should show time ago from date', () => {
-					const timeagoSpan = customDate.$$('span');
+					const timeagoSpan = customDate.shadowRoot.querySelector('span');
 					assert.isNotNull(timeagoSpan);
 					assert.isString(timeagoSpan.textContent);
 					assert.include(timeagoSpan.textContent, 'years ago');

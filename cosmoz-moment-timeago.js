@@ -1,18 +1,15 @@
-import './cosmoz-moment.js';
+import { momentAware } from './cosmoz-moment.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag';
-import { mixinBehaviors } from '@polymer/polymer/lib/legacy/class';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
-/*global Cosmoz*/
 const LOCALE = 'en';
 
 /**
  * @polymer
  * @customElement
  * @extends PolymerElement
+ * @appliesMixin momentAware
  */
-class CosmozMomentTimeago extends mixinBehaviors([
-	Cosmoz.MomentBehavior
-], PolymerElement) {
+class CosmozMomentTimeago extends momentAware(PolymerElement) {
 	static get template() {
 		return html`
 <span>[[ timeago(date, locale, _kicker) ]]</span>
@@ -64,9 +61,6 @@ class CosmozMomentTimeago extends mixinBehaviors([
 		this.set('_intervalId', window.setInterval(() => {
 			this._kicker += 1;
 		}, refreshInterval));
-	}
-	timeago(rawDate, locale) {
-		return Cosmoz.MomentBehavior.timeago(rawDate, locale);
 	}
 }
 customElements.define(CosmozMomentTimeago.is, CosmozMomentTimeago);

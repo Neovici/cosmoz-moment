@@ -11,36 +11,42 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
+
 import { PolymerElement } from '@polymer/polymer/polymer-element';
+import { dedupingMixin } from '@polymer/polymer/lib/utils/mixin';
 
 import moment from 'moment';
-/*global Cosmoz*/
-
-window.Cosmoz = window.Cosmoz || {};
 
 const LOCAL_SHARED_MOMENT = moment(),
 	MOMENT_ELEMENTS = [];
 
-/** @polymerBehavior */
-Cosmoz.MomentBehavior = {
-	properties: {
-		locale: {
-			type: String
-		},
-		moment: {
-			type: Object,
-			value: LOCAL_SHARED_MOMENT
-		}
-	},
-	attached() {
+/** @polymerMixin */
+export const momentAware = dedupingMixin(base => class extends base {
+	static get properties() {
+		return {
+			locale: {
+				type: String
+			},
+			moment: {
+				type: Object,
+				value: LOCAL_SHARED_MOMENT
+			}
+		};
+	}
+
+	connectedCallback() {
+		super.connectedCallback();
 		MOMENT_ELEMENTS.push(this);
-	},
-	detached() {
+	}
+
+	disconnectedCallback() {
+		super.disconnectedCallback();
 		const i = MOMENT_ELEMENTS.indexOf(this);
 		if (i >= 0) {
 			MOMENT_ELEMENTS.splice(i, 1);
 		}
-	},
+	}
+
 	_ensureDate(date) {
 		let dateDate;
 		if (date === undefined) {
@@ -55,7 +61,8 @@ Cosmoz.MomentBehavior = {
 			return;
 		}
 		return dateDate;
-	},
+	}
+
 	timeago(rawDate, locale) {
 		const date = this._ensureDate(rawDate);
 		if (!date) {
@@ -63,7 +70,7 @@ Cosmoz.MomentBehavior = {
 		}
 		return moment(date).locale(locale).fromNow();
 	}
-};
+});
 
 /**
  * `<cosmoz-moment>` is a Polymer component for centralized management of Moment.js with locale change distributed notification which very easy to use.
