@@ -5,14 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 		<title>cosmoz-moment test</title>
 
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<script src="../../web-component-tester/browser.js"></script>
-		<script src="../../test-fixture/test-fixture-mocha.js"></script>
-
-		<link rel="import" href="../../test-fixture/test-fixture.html">
-		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
-
-		<link rel="import" href="../cosmoz-moment.html">
+		<script src="/components/mocha/mocha.js"></script>
+		<script src="/components/wct-mocha/wct-mocha.js"></script>
+		<script src="/components/chai/chai.js"></script>
+		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 	</head>
 
 	<body>
@@ -24,24 +20,28 @@
 
 		<test-fixture id="custom-locale">
 			<template>
-				<cosmoz-moment locale="[[ locale ]]"></cosmoz-moment>
+				<cosmoz-moment></cosmoz-moment>
 			</template>
 		</test-fixture>
 
-		<script>
-			suite('cosmoz-moment properties', () => {
-				test('default locale is `en`', () => {
-					const locale = moment.locale();
-					assert.isString(locale);
-					assert.equal(locale, 'en');
-				});
-			});
+		<script type="module">
+			import '@polymer/test-fixture';
+			import '@polymer/test-fixture/test-fixture-mocha';
+
+			import '../cosmoz-moment.js';
+
+			import moment from 'moment';
+			import 'moment/src/locale/fr';
 
 			suite('set custom locale property', () => {
 				let customLocale;
 
 				setup(() => {
 					customLocale = fixture('custom-locale');
+				});
+
+				test('default locale is en', () => {
+					assert.equal(customLocale.locale, 'en');
 				});
 
 				test('change locale to French', () => {

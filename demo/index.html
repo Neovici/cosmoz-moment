@@ -6,25 +6,28 @@
 
 		<title>cozmoz-moment</title>
 
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<link rel="import" href="../../neon-animation/web-animations.html">
+		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
+		<script src="/components/web-animations-js/web-animations-next-lite.min.js"></script>
 
-		<link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html" />
-		<link rel="import" href="../../iron-demo-helpers/demo-snippet.html" />
+		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-pages-shared-styles.js"></script>
+		<script type="module" src="/components/@polymer/iron-demo-helpers/demo-snippet.js"></script>
 
-		<link rel="import" href="../../paper-dropdown-menu/paper-dropdown-menu.html">
-		<link rel="import" href="../../paper-listbox/paper-listbox.html">
-		<link rel="import" href="../../paper-item/paper-item.html">
+		<script type="module" src="/components/@polymer/paper-dropdown-menu/paper-dropdown-menu.js"></script>
+		<script type="module" src="/components/@polymer/paper-listbox/paper-listbox.js"></script>
+		<script type="module" src="/components/@polymer/paper-item/paper-item.js"></script>
 
-		<link rel="import" href="../cosmoz-moment.html">
-		<link rel="import" href="../cosmoz-moment-timeago.html">
+		<script type="module" src="../cosmoz-moment.js"></script>
+		<script type="module" src="../cosmoz-moment-timeago.js"></script>
 
+		<script type="module" src="/components/moment/src/locale/sv.js"></script>
+		<script type="module" src="/components/moment/src/locale/fr.js"></script>
 	</head>
 	<body unresolved>
 		<custom-style>
 			<style is="custom-style" include="demo-pages-shared-styles">
 			</style>
 		</custom-style>
+
 		<!-- page-wide locale -->
 		<div class="vertical-section-container centered">
 			<h4>Setting a page-wide locale</h4>
@@ -51,11 +54,10 @@
 			<h4>cosmoz-moment-timeago</h4>
 			<demo-snippet>
 				<template>
-					<b>Page was loaded</b> <cosmoz-moment-timeago></cosmoz-moment-timeago><br/>
-					<b>Polymer was created</b> <cosmoz-moment-timeago date="2015-05-27"></cosmoz-moment-timeago><br/>
+					<b>Page was loaded</b> <cosmoz-moment-timeago></cosmoz-moment-timeago><br>
+					<b>Polymer was created</b> <cosmoz-moment-timeago date="2015-05-27"></cosmoz-moment-timeago><br>
 				</template>
 			</demo-snippet>
 		</div>
-
 	</body>
 </html>

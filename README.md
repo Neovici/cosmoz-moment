@@ -9,22 +9,6 @@ with locale change distributed notification
 
 ## Example
 
-<!---
-```
-<custom-element-demo>
-	<template>
-		<script src="../webcomponentsjs/webcomponents-lite.js"></script>
-		<link rel="import" href="../neon-animation/web-animations.html">
-		<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
-		<link rel="import" href="../paper-listbox/paper-listbox.html">
-		<link rel="import" href="../paper-item/paper-item.html">
-		<link rel="import" href="cosmoz-moment.html">
-		<link rel="import" href="cosmoz-moment-timeago.html">
-		<next-code-block></next-code-block>
-	</template>
-</custom-element-demo>
-```
--->
 ```html
 <dom-bind>
 	<template is="dom-bind">

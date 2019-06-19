@@ -1,7 +1,7 @@
 {
 	"plugins": {
 		"local": {
-			"browsers": ["chrome"],
+			"browsers": ["chrome", "firefox"],
 				"browserOptions": {
 					"chrome": [
 						"headless",
@@ -17,17 +17,12 @@
 			"dir": "./coverage",
 			"reporters": ["text-summary", "lcov"],
 			"include": [
-				"cosmoz-moment-timeago.html",
-				"cosmoz-moment.html"
+				"**/cosmoz-*.js"
 			],
 			"exclude": []
 		},
 		"sauce": {
 			"browsers": [{
-				"browserName": "microsoftedge",
-				"platform": "Windows 10",
-				"version": ""
-			}, {
 				"browserName": "chrome",
 				"platform": "Windows 10",
 				"version": "beta"

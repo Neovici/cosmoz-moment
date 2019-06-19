@@ -5,14 +5,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 		<title>cosmoz-moment-timeago test</title>
 
-		<script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-		<script src="../../web-component-tester/browser.js"></script>
-		<script src="../../test-fixture/test-fixture-mocha.js"></script>
-
-		<link rel="import" href="../../test-fixture/test-fixture.html">
-		<link rel="import" href="../../iron-test-helpers/iron-test-helpers.html">
-
-		<link rel="import" href="../cosmoz-moment-timeago.html">
+		<script src="/components/mocha/mocha.js"></script>
+		<script src="/components/wct-mocha/wct-mocha.js"></script>
+		<script src="/components/chai/chai.js"></script>
+		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-bundle.js"></script>
 	</head>
 
 	<body>
@@ -28,7 +24,14 @@
 			</template>
 		</test-fixture>
 
-		<script>
+		<script type="module">
+			import '@polymer/test-fixture/test-fixture';
+			import '@polymer/test-fixture/test-fixture-mocha';
+
+			import '../cosmoz-moment-timeago.js';
+
+			import moment from 'moment';
+
 			suite('cosmoz-moment-timeago properties', () => {
 				let baseFixture;
 
@@ -48,7 +51,7 @@
 				});
 
 				test('timeago value from today date is not invalid', () => {
-					const timeagoSpan = baseFixture.$$('span');
+					const timeagoSpan = baseFixture.shadowRoot.querySelector('span');
 					assert.isNotNull(timeagoSpan);
 					assert.isString(timeagoSpan.textContent);
 					assert.notEqual(timeagoSpan.textContent, 'Invalid date', 'date has invalid value');
@@ -63,7 +66,7 @@
 				});
 
 				test('should show time ago from date', () => {
-					const timeagoSpan = customDate.$$('span');
+					const timeagoSpan = customDate.shadowRoot.querySelector('span');
 					assert.isNotNull(timeagoSpan);
 					assert.isString(timeagoSpan.textContent);
 					assert.include(timeagoSpan.textContent, 'years ago');
