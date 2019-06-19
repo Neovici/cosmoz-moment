@@ -20,6 +20,12 @@ class CosmozMomentTimeago extends momentAware(PolymerElement) {
 		return 'cosmoz-moment-timeago';
 	}
 
+	static get observers() {
+		return [
+			'refreshIntervalChanged(refreshInterval)'
+		];
+	}
+
 	static get properties() {
 		return {
 			date: {
@@ -32,12 +38,7 @@ class CosmozMomentTimeago extends momentAware(PolymerElement) {
 			},
 			refreshInterval: {
 				type: Number,
-				value: 60000,
-				observer(refreshInterval) {
-					this.set('_intervalId', window.setInterval(() => {
-						this._kicker += 1;
-					}, refreshInterval));
-				}
+				value: 60000
 			},
 			_kicker: {
 				type: Number,
@@ -54,6 +55,12 @@ class CosmozMomentTimeago extends momentAware(PolymerElement) {
 	disconnectedCallback() {
 		super.disconnectedCallback();
 		window.clearInterval(this._intervalId);
+	}
+
+	refreshIntervalChanged(refreshInterval) {
+		this.set('_intervalId', window.setInterval(() => {
+			this._kicker += 1;
+		}, refreshInterval));
 	}
 }
 customElements.define(CosmozMomentTimeago.is, CosmozMomentTimeago);
