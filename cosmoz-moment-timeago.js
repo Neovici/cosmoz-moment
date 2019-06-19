@@ -1,4 +1,4 @@
-import { momentAware } from './cosmoz-moment.js';
+import { momentAware } from './cosmoz-moment';
 import { html } from '@polymer/polymer/lib/utils/html-tag';
 import { PolymerElement } from '@polymer/polymer/polymer-element';
 const LOCALE = 'en';
