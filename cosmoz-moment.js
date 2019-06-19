@@ -89,6 +89,12 @@ class CosmozMoment extends PolymerElement {
 		return 'cosmoz-moment';
 	}
 
+	static get observers() {
+		return [
+			'localeChanged(locale)'
+		];
+	}
+
 	static get properties() {
 		return {
 			/**
@@ -96,14 +102,15 @@ class CosmozMoment extends PolymerElement {
 			*/
 			locale: {
 				type: String,
-				value: 'en',
-				observer(newLocale) {
-					const locale = newLocale;
-					moment.locale(locale);
-					MOMENT_ELEMENTS.forEach(element => element._setLocale(locale));
-				}
+				value: 'en'
 			}
 		};
+	}
+
+	localeChanged(newLocale) {
+		const locale = newLocale;
+		moment.locale(locale);
+		MOMENT_ELEMENTS.forEach(element => element._setLocale(locale));
 	}
 }
 customElements.define(CosmozMoment.is, CosmozMoment);
