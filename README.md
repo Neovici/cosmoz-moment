@@ -1,11 +1,12 @@
 cosmoz-moment
 =============
 
-[![Build Status](https://travis-ci.org/Neovici/cosmoz-moment.svg?branch=master)](https://travis-ci.org/Neovici/cosmoz-moment)
+[![Build Status](https://github.com/Neovici/cosmoz-moment/workflows/Github%20CI/badge.svg)](https://github.com/Neovici/cosmoz-moment/actions?workflow=Github+CI)
 [![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/owner/my-element)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 `cosmoz-moment` is a Polymer component for centralized management of Moment.js
-with locale change distributed notification
+with locale change distributed notification.
 
 ## Example
 

@@ -25,7 +25,7 @@
 			"browsers": [{
 				"browserName": "chrome",
 				"platform": "Windows 10",
-				"version": "beta"
+				"version": "latest"
 			}, {
 				"browserName": "firefox",
 				"platform": "Windows 10",
