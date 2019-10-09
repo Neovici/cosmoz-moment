@@ -1,6 +1,6 @@
 {
 	"name": "@neovici/cosmoz-moment",
-	"version": "3.0.1",
+	"version": "3.0.2",
 	"description": "A Polymer component for centralized management of Moment.js with locale change distributed notification.",
 	"keywords": [
 		"polymer",
